@@ -32,7 +32,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.6.0",
     "mongoose": "^6.3.3",
-    "nodemon": "^2.0.16",
     "ts-node": "^10.8.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.4"
@@ -43,6 +42,7 @@
     "jest": "^28.1.1",
     "mongodb-memory-server": "^8.5.2",
     "supertest": "^6.2.3",
+    "nodemon": "^2.0.16",
     "ts-jest": "^28.0.5"
   }
 }
