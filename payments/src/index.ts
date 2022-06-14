@@ -26,7 +26,6 @@ const start = async () => {
     throw new Error("STRIPE_API_KEY must be defined");
   }
   try {
-    console.log("starting payment...")
     await natsWrapper.connect(
       process.env.NATS_CLUSTER_ID,
       process.env.NATS_CLIENT_ID,

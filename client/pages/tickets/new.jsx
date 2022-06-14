@@ -17,7 +17,6 @@ const NewTicket = (props) => {
       price: data.price,
     },
     onSuccess: (ticket) => {
-      console.log(ticket);
       router.push("/");
     },
   });
@@ -25,7 +24,6 @@ const NewTicket = (props) => {
   const handleCreateTicket = async (e) => {
     e.preventDefault();
     await doRequest();
-    console.log(data);
   };
 
   const handleProcessPrice = () => {
