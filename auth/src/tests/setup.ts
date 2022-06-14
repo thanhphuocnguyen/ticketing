@@ -37,7 +37,6 @@ global.signin = async () => {
     password,
   });
   // .expect(201);
-  console.log(authResposne.body);
   const cookie = authResposne.get("Set-Cookie");
   return cookie;
 };
