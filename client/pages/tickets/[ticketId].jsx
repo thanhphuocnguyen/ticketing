@@ -10,7 +10,6 @@ const TicketShow = ({ ticket }) => {
       ticketId: ticket.id,
     },
     onSuccess: (order) => {
-      console.log(order);
       router.push("/orders/[orderId]", `/orders/${order.id}`);
     },
     url: "/api/orders",
