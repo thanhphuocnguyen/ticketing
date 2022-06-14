@@ -31,14 +31,13 @@ afterAll(async () => {
 
 global.signin = async () => {
   const email = "test1@test.com";
-  const password = "AbcdEf123#";
-  const authResposne = await request(app)
-    .post("/api/users/sign-up")
-    .send({
-      email,
-      password,
-    })
-    .expect(201);
+  const password = "AbcdEf123@";
+  const authResposne = await request(app).post("/api/users/sign-up").send({
+    email,
+    password,
+  });
+  // .expect(201);
+  console.log(authResposne.body);
   const cookie = authResposne.get("Set-Cookie");
   return cookie;
 };
