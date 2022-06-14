@@ -1,7 +1,5 @@
 import { MongoMemoryServer } from "mongodb-memory-server";
 import mongoose from "mongoose";
-import request from "supertest";
-import app from "../app";
 import jwt from "jsonwebtoken";
 
 declare global {
@@ -10,16 +8,15 @@ declare global {
 
 jest.mock("../nats-wrapper");
 
-process.env.STRIPE_KEY = "sk_test_hnfrAm8rOkryFEnV23jjfFlw";
+process.env.STRIPE_API_KEY = "sk_test_51Kh4LHIdmCE9mMUwqg22q8oQePS4KcIcZqyTZQxbzQfrBkjkDlcskgOMD5UnjLfD5u1GQtuD6U43XayBwMSl9IYV00qSWROQDn";
 
 let mongo: any;
 beforeAll(async () => {
   process.env.JWT_KEY = "asdfasdf";
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-  mongo = new MongoMemoryServer();
+  mongo = await MongoMemoryServer.create();
   const mongoUri = await mongo.getUri();
-
   await mongoose.connect(mongoUri);
 });
 
@@ -33,8 +30,8 @@ beforeEach(async () => {
 });
 
 afterAll(async () => {
-  await mongo.stop();
   await mongoose.connection.close();
+  await mongo.stop();
 });
 
 global.signin = (id?: string) => {
@@ -57,5 +54,5 @@ global.signin = (id?: string) => {
   const base64 = Buffer.from(sessionJSON).toString("base64");
 
   // return a string thats the cookie with the encoded data
-  return [`express:sess=${base64}`];
+  return [`session=${base64}`];
 };

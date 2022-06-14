@@ -55,7 +55,7 @@ paymentRouter.post(
     });
 
     res
-      .status(200)
+      .status(201)
       .send({ orderId: newPayment.orderId, stripeId: newPayment.stripeId });
   }
 );

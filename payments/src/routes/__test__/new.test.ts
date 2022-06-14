@@ -37,7 +37,7 @@ it("returns a 401 when purchasing an order that doesnt belong to the user", asyn
     .expect(401);
 });
 
-it("returns a 400 when purchasing a cancelled order", async () => {
+it("returns a 403 when purchasing a cancelled order", async () => {
   const userId = new mongoose.Types.ObjectId().toHexString();
   const order = Order.build({
     id: new mongoose.Types.ObjectId().toHexString(),
@@ -55,7 +55,7 @@ it("returns a 400 when purchasing a cancelled order", async () => {
       orderId: order.id,
       token: "asdlkfj",
     })
-    .expect(400);
+    .expect(403);
 });
 
 it("returns a 201 with valid inputs", async () => {
