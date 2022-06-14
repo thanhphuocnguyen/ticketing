@@ -2,7 +2,6 @@ import Link from "next/link";
 import React from "react";
 
 const OrderList = ({ orders }) => {
-  console.log(orders);
   if (!orders.length)
     return (
       <div className="text-center py-5 font-weight-bold">

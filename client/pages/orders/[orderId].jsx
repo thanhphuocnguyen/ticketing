@@ -14,7 +14,6 @@ const OrderShow = ({ order, currentUser }) => {
     },
     url: "/api/payments",
     onSuccess: (payment) => {
-      console.log(payment);
       router.push("/orders");
     },
   });
@@ -56,7 +55,6 @@ const OrderShow = ({ order, currentUser }) => {
 };
 OrderShow.getInitialProps = async (context, client, currentUser) => {
   let dataOrder = null;
-  console.log(currentUser);
   const { orderId } = context.query;
   try {
     const { data } = await client.get("/api/orders/" + orderId);
